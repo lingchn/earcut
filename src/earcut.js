@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = earcut;
-
 function earcut(data, holeIndices, dim) {
 
     dim = dim || 2;
@@ -642,3 +640,14 @@ earcut.flatten = function (data) {
     }
     return result;
 };
+
+if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(function () {
+        return earcut;
+    });
+} else if (typeof module !== 'undefined' && module.exports) {
+    module.exports = earcut;
+} else {
+    window.earcut = earcut;
+}
